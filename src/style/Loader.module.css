@@ -1,0 +1,38 @@
+.loader {
+    position: fixed;
+    inset: 0;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeOut 2s ease forwards;
+    animation-delay: 2s;
+    z-index: 9999;
+}
+
+.loaderGif {
+    width: 50%;
+    /* adjust size */
+    height: auto;
+    animation: scaleIn 1.5s ease forwards;
+}
+
+/* Optional animation for gif */
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
+}

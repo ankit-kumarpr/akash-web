@@ -1,0 +1,485 @@
+/* =============================================
+   SERVICES SECTION — Custom Carousel
+   ============================================= */
+
+.services-section {
+    background-color: #000;
+    padding: 80px 0 60px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Title */
+.services-title {
+    color: #fff;
+    font-size: clamp(1.8rem, 5vw, 2.8rem);
+    margin-bottom: clamp(2rem, 5vw, 3.5rem);
+    text-align: center;
+    z-index: 10;
+    line-height: 1.2;
+    padding: 0 1rem;
+    max-width: 1200px;
+}
+
+.services-title span {
+    color: var(--primary-color);
+    font-style: italic;
+}
+
+/* =============================================
+   CAROUSEL VIEWPORT & TRACK
+   ============================================= */
+
+.carousel-viewport {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 30px 0;
+}
+
+.carousel-track {
+    display: flex;
+    gap: 30px;
+    padding: 10px 0;
+    /* Slide offset: center the active card */
+    transform: translateX(calc(50vw - (var(--active-index) * (780px + 30px)) - 390px));
+    transition: transform var(--transition-duration, 1.2s) cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+}
+
+/* =============================================
+   SERVICE CARD
+   ============================================= */
+
+.service-card {
+    position: relative;
+    flex-shrink: 0;
+    width: 780px;
+    min-height: 430px;
+    background: #0a0a0a;
+    border-radius: 24px;
+    overflow: hidden;
+    box-sizing: border-box;
+    border: 1px solid #222;
+    transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1),
+        opacity 1.2s ease,
+        filter 1.2s ease;
+    cursor: pointer;
+
+    /* Default: inactive state */
+    transform: scale(0.85);
+    opacity: 0.5;
+    filter: blur(1px);
+}
+
+/* Active card */
+.service-card.active {
+    transform: scale(1);
+    opacity: 1;
+    filter: blur(0);
+    border-color: var(--primary-color);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+}
+
+/* =============================================
+   INNER LAYOUT — Image Left, Content Right
+   ============================================= */
+
+.service-block-style1 {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+.inner-column {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    min-height: 430px;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Image Box */
+.image-box {
+    width: 42%;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 35px;
+    box-sizing: border-box;
+}
+
+.image-box img {
+    width: 100%;
+    max-width: 240px;
+    height: auto;
+    max-height: 240px;
+    object-fit: contain;
+    transition: transform 0.6s ease;
+    filter: drop-shadow(0 10px 30px rgba(0, 200, 100, 0.15));
+}
+
+.service-card.active .image-box img {
+    animation: spin 15s linear infinite;
+}
+
+.service-card:not(.active):hover .image-box img {
+    transform: scale(1.05);
+}
+
+/* Content Box */
+.content-box {
+    flex: 1;
+    padding: 2.5rem 2.5rem 2.5rem 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+    box-sizing: border-box;
+}
+
+/* Subtitle (category) */
+.service-subtitle {
+    font-size: 1rem;
+    color: var(--primary-color);
+    margin: 0 0 12px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+/* Title */
+.service-title-text {
+    margin: 0 0 16px;
+    font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.service-title-text a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.service-title-text a:hover {
+    color: var(--primary-color);
+}
+
+/* Description */
+.service-details {
+    color: #888;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 1.8rem;
+    max-width: 420px;
+}
+
+/* =============================================
+   BUTTONS
+   ============================================= */
+
+.btn-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Green pill button */
+.read-more-text {
+    background: var(--primary-color);
+    color: #000;
+    padding: 12px 28px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: background 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.read-more-text:hover {
+    background: #fff;
+    transform: translateY(-2px);
+}
+
+/* White circle icon */
+.read-more-icon {
+    width: 45px;
+    height: 45px;
+    background: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    text-decoration: none;
+    flex-shrink: 0;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.read-more-icon:hover {
+    background: var(--primary-color);
+    transform: rotate(45deg);
+}
+
+/* =============================================
+   SNAKE BORDER ANIMATION
+   ============================================= */
+
+.snake-line {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.service-card .snake-line span {
+    position: absolute;
+    display: block;
+}
+
+.service-card.active .snake-line span:nth-child(1) {
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--primary-color));
+    animation: btn-anim1 2s linear infinite;
+}
+
+.service-card.active .snake-line span:nth-child(2) {
+    top: -100%;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg, transparent, var(--primary-color));
+    animation: btn-anim2 2s linear infinite;
+    animation-delay: 0.5s;
+}
+
+.service-card.active .snake-line span:nth-child(3) {
+    bottom: 0;
+    right: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(270deg, transparent, var(--primary-color));
+    animation: btn-anim3 2s linear infinite;
+    animation-delay: 1s;
+}
+
+.service-card.active .snake-line span:nth-child(4) {
+    bottom: -100%;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(360deg, transparent, var(--primary-color));
+    animation: btn-anim4 2s linear infinite;
+    animation-delay: 1.5s;
+}
+
+/* =============================================
+   DOTS
+   ============================================= */
+
+.dots-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #333;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    background: var(--primary-color);
+    transform: scale(1.4);
+    box-shadow: 0 0 10px rgba(74, 222, 128, 0.5);
+}
+
+/* =============================================
+   KEYFRAMES
+   ============================================= */
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes btn-anim1 {
+    0% {
+        left: -100%;
+    }
+
+    50%,
+    100% {
+        left: 100%;
+    }
+}
+
+@keyframes btn-anim2 {
+    0% {
+        top: -100%;
+    }
+
+    50%,
+    100% {
+        top: 100%;
+    }
+}
+
+@keyframes btn-anim3 {
+    0% {
+        right: -100%;
+    }
+
+    50%,
+    100% {
+        right: 100%;
+    }
+}
+
+@keyframes btn-anim4 {
+    0% {
+        bottom: -100%;
+    }
+
+    50%,
+    100% {
+        bottom: 100%;
+    }
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+
+@media (max-width: 1024px) {
+    .carousel-track {
+        transform: translateX(calc(50vw - (var(--active-index) * (680px + 24px)) - 340px));
+        gap: 24px;
+    }
+
+    .service-card {
+        width: 680px;
+        min-height: 340px;
+    }
+
+    .image-box {
+        padding: 25px;
+    }
+
+    .image-box img {
+        max-width: 190px;
+        max-height: 190px;
+    }
+}
+
+@media (max-width: 768px) {
+    .carousel-track {
+        transform: translateX(calc(50vw - (var(--active-index) * (90vw + 20px)) - 45vw));
+        gap: 20px;
+    }
+
+    .service-card {
+        width: 90vw;
+        min-height: auto;
+    }
+
+    .inner-column {
+        flex-direction: column;
+        min-height: auto;
+        padding: 20px;
+    }
+
+    .image-box {
+        width: 100%;
+        padding: 20px 20px 10px;
+    }
+
+    .image-box img {
+        max-width: 160px;
+        max-height: 160px;
+    }
+
+    .content-box {
+        padding: 0 0 1.5rem;
+        align-items: center;
+        text-align: center;
+    }
+
+    .service-details {
+        max-width: 100%;
+    }
+
+    .btn-box {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .services-section {
+        padding: 50px 0 30px;
+    }
+
+    .services-title {
+        font-size: 1.5rem;
+        padding: 0 16px;
+    }
+
+    .carousel-track {
+        transform: translateX(calc(50vw - (var(--active-index) * (88vw + 16px)) - 44vw));
+        gap: 16px;
+    }
+
+    .service-card {
+        width: 88vw;
+    }
+
+    .service-title-text {
+        font-size: 1.2rem;
+    }
+
+    .service-details {
+        font-size: 0.875rem;
+        line-height: 1.6;
+    }
+
+    .read-more-text {
+        padding: 10px 20px;
+        font-size: 0.875rem;
+    }
+
+    .read-more-icon {
+        width: 36px;
+        height: 36px;
+    }
+
+    .image-box img {
+        max-width: 130px;
+        max-height: 130px;
+    }
+}

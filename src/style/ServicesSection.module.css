@@ -1,0 +1,144 @@
+.servicesSection {
+    background: #000;
+    padding: 120px 5%;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+}
+
+.topGrid {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+.imageBox {
+    flex: 1;
+}
+
+.imageBox img {
+    width: 100%;
+    border-radius: 30px;
+}
+
+.headerContent {
+    flex: 1.5;
+    padding-left: 20px;
+}
+
+.subTitle {
+    color: var( --primary-color);
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+.mainTitle {
+    font-size: 48px;
+    line-height: 1.2;
+    margin-top: 15px;
+}
+
+.arrowBtn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid #333;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+/* CARDS LAYOUT */
+.cardsGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    /* Creates the thin lines between glass panels */
+    background: rgba(255, 255, 255, 0.1);
+    /* Line color */
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.introCard,
+.serviceCard {
+    background: #000;
+    /* Solid background for gap-border effect */
+    padding: 50px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 350px;
+}
+
+/* Intro Card Specifics */
+.introIcon {
+    width: 40px;
+    margin-bottom: 30px;
+}
+
+.introCard p {
+    color: #999;
+    line-height: 1.6;
+    font-size: 15px;
+}
+
+.btnWrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.exploreAll {
+    background: transparent;
+    border: 1px solid #333;
+    color: #fff;
+    padding: 10px 25px;
+    border-radius: 30px;
+}
+
+/* Service Card Specifics */
+.serviceIcon img {
+    width: 50px;
+    filter: drop-shadow(0 0 10px var( --primary-color));
+}
+
+.serviceCard h3 {
+    font-size: 24px;
+    margin: 30px 0;
+}
+
+.cardFooter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+    color: #999;
+    cursor: pointer;
+}
+
+.footerArrow,
+.smallArrow {
+    width: 35px;
+    height: 35px;
+    background: #1a1a1a;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+    .cardsGrid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .topGrid {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
