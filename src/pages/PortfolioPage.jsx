@@ -157,7 +157,7 @@ const PortfolioPage = () => {
         });
 
         return () => controls_list.forEach(controls => controls.stop());
-    }, [stats]);
+    }, []);
 
     // Animation variants
     const containerVariants = {

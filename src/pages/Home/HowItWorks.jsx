@@ -1,15 +1,6 @@
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import styles from "../../style/HowItWorks.module.css";
-
-// Optimized path that matches your image exactly
-const PATH = `
-M 101 0
-C 101 200, 101 200, 101 200
-C 101 300, 101 300, 101 400
-C 101 500, 101 500, 101 600
-C 101 700, 101 700, 101 800
-`;
 
 // More precise path for smoother rocket movement
 const PRECISE_PATH = `
@@ -52,7 +43,6 @@ const steps = [
 ];
 export default function HowItWorks() {
   const ref = useRef(null);
-  const [rocketPosition, setRocketPosition] = useState({ x: 0, y: 0, rotation: 0 });
 
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -67,12 +57,6 @@ export default function HowItWorks() {
 
   const pathProgress = useTransform(smooth, [0, 1], [0, 1]);
 
-  // Calculate rocket position based on scroll
-  const rocketX = useTransform(smooth, (progress) => {
-    // Start at center (101) and follow the path
-    return 101 + Math.sin(progress * Math.PI * 4) * 0; // Remove side-to-side movement for straight vertical
-  });
-
   const rocketY = useTransform(smooth, (progress) => {
     return progress * 800; // Total path height
   });
@@ -82,57 +66,6 @@ export default function HowItWorks() {
     const tilt = Math.sin(progress * Math.PI * 2) * 10;
     return `${tilt}deg`;
   });
-
-  // Rocket SVG component
-  const RocketIcon = ({ style }) => (
-    <svg
-      style={style}
-      width="60"
-      height="60"
-      viewBox="0 0 24 24"
-      fill="none"
-      className={styles.rocket}
-    >
-      <path
-        d="M12 2L15.09 5.09L12 8.18L8.91 5.09L12 2Z"
-        fill="var( --primary-color)"
-        stroke="var( --primary-color)"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M12 8.18L15.09 11.27L12 14.36L8.91 11.27L12 8.18Z"
-        fill="var( --primary-color)"
-        stroke="var( --primary-color)"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M4 14.91L7.09 18L4 21.09L0.91 18L4 14.91Z"
-        fill="var( --primary-color)"
-        stroke="var( --primary-color)"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M20 14.91L23.09 18L20 21.09L16.91 18L20 14.91Z"
-        fill="var( --primary-color)"
-        stroke="var( --primary-color)"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M12 14.36V22"
-        stroke="var( --primary-color)"
-        strokeWidth="2"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
 
   // Alternative simpler rocket
   const SimpleRocket = ({ style }) => (
