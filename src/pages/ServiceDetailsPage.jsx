@@ -182,7 +182,7 @@ const ServiceDetailsPage = () => {
                     transition={{ delay: index * 0.1 }}
                     whileHover={{ scale: 1.1 }}
                   >
-                    <a href="#" className={styles.navLink}>{item}</a>
+                    <a href="#!" className={styles.navLink}>{item}</a>
                   </motion.li>
                 ))}
               </ul>
@@ -458,7 +458,7 @@ const ServiceDetailsPage = () => {
                     transition={{ delay: index * 0.1 }}
                     whileHover={{ x: 10 }}
                   >
-                    <a href="#">{link}</a>
+                    <a href="#!">{link}</a>
                   </motion.li>
                 ))}
               </ul>
@@ -476,7 +476,7 @@ const ServiceDetailsPage = () => {
                     transition={{ delay: index * 0.1 }}
                     whileHover={{ x: 10 }}
                   >
-                    <a href="#">{service}</a>
+                    <a href="#!">{service}</a>
                   </motion.li>
                 ))}
               </ul>

@@ -1,13 +1,124 @@
 import React, { useState, useEffect } from 'react';
-import { motion, useScroll, useTransform, useInView, animate } from 'framer-motion';
+import { motion, useScroll, useTransform, animate } from 'framer-motion';
 import styles from '../style/PortfolioPage.module.css';
 
 // Import icons
 import {
-    FaFacebook, FaInstagram, FaTwitter, FaLinkedin,
+    FaFacebook, FaInstagram,
     FaPalette, FaBullhorn, FaPaintBrush, FaMobileAlt,
-    FaChartLine, FaCloud, FaShieldAlt, FaSearch
+    FaChartLine, FaCloud, FaSearch
 } from 'react-icons/fa';
+
+// Portfolio items data
+const portfolioItems = [
+    {
+        id: 1,
+        number: "001",
+        title: "Social Media Marketing",
+        category: "marketing",
+        description: "Strategic social media campaigns that drive engagement and build communities across platforms.",
+        icon: <FaFacebook />,
+        color: "#3b5998",
+        stats: { clients: 250, projects: 89 }
+    },
+    {
+        id: 2,
+        number: "002",
+        title: "Branding And Identity",
+        category: "branding",
+        description: "Creating memorable brand identities that resonate with target audiences and stand out in the market.",
+        icon: <FaPalette />,
+        color: "#e91e63",
+        stats: { clients: 180, projects: 67 }
+    },
+    {
+        id: 3,
+        number: "003",
+        title: "Product Design Solutions",
+        category: "design",
+        description: "User-centered product design that combines aesthetics with functionality for optimal user experience.",
+        icon: <FaPaintBrush />,
+        color: "#4caf50",
+        stats: { clients: 320, projects: 120 }
+    },
+    {
+        id: 4,
+        number: "004",
+        title: "Branding And Identity",
+        category: "branding",
+        description: "Comprehensive branding strategies that establish strong market presence and customer loyalty.",
+        icon: <FaBullhorn />,
+        color: "#ff9800",
+        stats: { clients: 150, projects: 55 }
+    },
+    {
+        id: 5,
+        number: "005",
+        title: "Social Media Marketing",
+        category: "marketing",
+        description: "Targeted social media strategies that increase brand visibility and drive conversions.",
+        icon: <FaInstagram />,
+        color: "#e4405f",
+        stats: { clients: 280, projects: 95 }
+    },
+    {
+        id: 6,
+        number: "006",
+        title: "Product Design Solutions",
+        category: "design",
+        description: "Innovative product design solutions that solve real-world problems with elegant interfaces.",
+        icon: <FaMobileAlt />,
+        color: "#2196f3",
+        stats: { clients: 200, projects: 78 }
+    },
+    {
+        id: 7,
+        number: "007",
+        title: "Digital Marketing",
+        category: "marketing",
+        description: "Data-driven digital marketing campaigns that deliver measurable results and ROI.",
+        icon: <FaChartLine />,
+        color: "#9c27b0",
+        stats: { clients: 420, projects: 160 }
+    },
+    {
+        id: 8,
+        number: "008",
+        title: "UI/UX Design",
+        category: "design",
+        description: "Intuitive user interfaces and experiences that delight users and improve engagement.",
+        icon: <FaSearch />,
+        color: "#00bcd4",
+        stats: { clients: 380, projects: 145 }
+    },
+    {
+        id: 9,
+        number: "009",
+        title: "Cloud Services",
+        category: "tech",
+        description: "Scalable cloud solutions that optimize performance and ensure business continuity.",
+        icon: <FaCloud />,
+        color: "#607d8b",
+        stats: { clients: 120, projects: 45 }
+    }
+];
+
+// Filter options
+const filters = [
+    { id: 'all', label: 'All Services' },
+    { id: 'marketing', label: 'Marketing' },
+    { id: 'branding', label: 'Branding' },
+    { id: 'design', label: 'Design' },
+    { id: 'tech', label: 'Technology' }
+];
+
+// Stats data with actual values for counting animation
+const stats = [
+    { id: 'clients', number: 1200, label: "Happy Clients", duration: 2 },
+    { id: 'projects', number: 850, label: "Projects Delivered", duration: 2.5 },
+    { id: 'team', number: 48, label: "Team Members", duration: 1.5 },
+    { id: 'awards', number: 36, label: "Awards Won", duration: 3 }
+];
 
 const PortfolioPage = () => {
     const [activeFilter, setActiveFilter] = useState('all');
@@ -25,117 +136,6 @@ const PortfolioPage = () => {
     const heroOpacity = useTransform(scrollY, [0, 300], [1, 0.8]);
     const heroScale = useTransform(scrollY, [0, 300], [1, 1.05]);
 
-    // Portfolio items data
-    const portfolioItems = [
-        {
-            id: 1,
-            number: "001",
-            title: "Social Media Marketing",
-            category: "marketing",
-            description: "Strategic social media campaigns that drive engagement and build communities across platforms.",
-            icon: <FaFacebook />,
-            color: "#3b5998",
-            stats: { clients: 250, projects: 89 }
-        },
-        {
-            id: 2,
-            number: "002",
-            title: "Branding And Identity",
-            category: "branding",
-            description: "Creating memorable brand identities that resonate with target audiences and stand out in the market.",
-            icon: <FaPalette />,
-            color: "#e91e63",
-            stats: { clients: 180, projects: 67 }
-        },
-        {
-            id: 3,
-            number: "003",
-            title: "Product Design Solutions",
-            category: "design",
-            description: "User-centered product design that combines aesthetics with functionality for optimal user experience.",
-            icon: <FaPaintBrush />,
-            color: "#4caf50",
-            stats: { clients: 320, projects: 120 }
-        },
-        {
-            id: 4,
-            number: "004",
-            title: "Branding And Identity",
-            category: "branding",
-            description: "Comprehensive branding strategies that establish strong market presence and customer loyalty.",
-            icon: <FaBullhorn />,
-            color: "#ff9800",
-            stats: { clients: 150, projects: 55 }
-        },
-        {
-            id: 5,
-            number: "005",
-            title: "Social Media Marketing",
-            category: "marketing",
-            description: "Targeted social media strategies that increase brand visibility and drive conversions.",
-            icon: <FaInstagram />,
-            color: "#e4405f",
-            stats: { clients: 280, projects: 95 }
-        },
-        {
-            id: 6,
-            number: "006",
-            title: "Product Design Solutions",
-            category: "design",
-            description: "Innovative product design solutions that solve real-world problems with elegant interfaces.",
-            icon: <FaMobileAlt />,
-            color: "#2196f3",
-            stats: { clients: 200, projects: 78 }
-        },
-        {
-            id: 7,
-            number: "007",
-            title: "Digital Marketing",
-            category: "marketing",
-            description: "Data-driven digital marketing campaigns that deliver measurable results and ROI.",
-            icon: <FaChartLine />,
-            color: "#9c27b0",
-            stats: { clients: 420, projects: 160 }
-        },
-        {
-            id: 8,
-            number: "008",
-            title: "UI/UX Design",
-            category: "design",
-            description: "Intuitive user interfaces and experiences that delight users and improve engagement.",
-            icon: <FaSearch />,
-            color: "#00bcd4",
-            stats: { clients: 380, projects: 145 }
-        },
-        {
-            id: 9,
-            number: "009",
-            title: "Cloud Services",
-            category: "tech",
-            description: "Scalable cloud solutions that optimize performance and ensure business continuity.",
-            icon: <FaCloud />,
-            color: "#607d8b",
-            stats: { clients: 120, projects: 45 }
-        }
-    ];
-
-    // Filter options
-    const filters = [
-        { id: 'all', label: 'All Services' },
-        { id: 'marketing', label: 'Marketing' },
-        { id: 'branding', label: 'Branding' },
-        { id: 'design', label: 'Design' },
-        { id: 'tech', label: 'Technology' }
-    ];
-
-    // Stats data with actual values for counting animation
-    const stats = [
-        { id: 'clients', number: 1200, label: "Happy Clients", duration: 2 },
-        { id: 'projects', number: 850, label: "Projects Delivered", duration: 2.5 },
-        { id: 'team', number: 48, label: "Team Members", duration: 1.5 },
-        { id: 'awards', number: 36, label: "Awards Won", duration: 3 }
-    ];
-
     // Filtered items based on active filter
     const filteredItems = activeFilter === 'all'
         ? portfolioItems
@@ -143,8 +143,8 @@ const PortfolioPage = () => {
 
     // Animation for stats counting
     useEffect(() => {
-        stats.forEach(stat => {
-            const controls = animate(0, stat.number, {
+        const controls_list = stats.map(stat => {
+            return animate(0, stat.number, {
                 duration: stat.duration,
                 ease: "easeOut",
                 onUpdate(value) {
@@ -154,10 +154,10 @@ const PortfolioPage = () => {
                     }));
                 }
             });
-
-            return () => controls.stop();
         });
-    }, []);
+
+        return () => controls_list.forEach(controls => controls.stop());
+    }, [stats]);
 
     // Animation variants
     const containerVariants = {
