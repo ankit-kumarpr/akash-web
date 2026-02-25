@@ -3,7 +3,7 @@ import styles from '../style/BlogDetail.module.css';
 import { useGetBlogsByIdQuery, useGetBlogsQuery } from '../redux/api';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion, useScroll, useSpring } from 'framer-motion';
-import { Calendar, User, Clock, ChevronRight, Facebook, Twitter, Linkedin, Instagram, ArrowLeft } from 'lucide-react';
+import { Calendar, User, Clock, ChevronRight, Facebook, Twitter, Linkedin, ArrowLeft } from 'lucide-react';
 
 const BlogDetail = () => {
     const { id } = useParams();

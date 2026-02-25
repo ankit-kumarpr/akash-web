@@ -2,8 +2,7 @@ import React, { useRef } from 'react';
 import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 import styles from '../style/AboutPage.module.css';
 import { FaTrophy, FaUsers, FaCheckCircle, FaStar, FaQuoteLeft, FaAward, FaRocket } from 'react-icons/fa';
-import Navbar from '../components/Navbar';
-import Footer from './Footer';
+
 
 const AboutPage = () => {
     const containerRef = useRef(null);

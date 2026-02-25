@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 
 const Blog = () => {
     const navigate = useNavigate()
-    const { data, isLoading } = useGetBlogsQuery()
+    const { data } = useGetBlogsQuery()
 
     return (
         <section className={styles.blogSection}>

@@ -4,36 +4,6 @@ import styles from "../style/CareerPage.module.css";
 import { FaBriefcase, FaUsers, FaRocket } from "react-icons/fa";
 import { useGetCareerQuery } from "../redux/api";
 
-const jobs = [
-  {
-    id: "001",
-    title: "Frontend Developer",
-    location: "Remote",
-    type: "Full Time",
-    desc: "Build modern UI using React and Framer Motion.",
-  },
-  {
-    id: "002",
-    title: "Backend Developer",
-    location: "Bangalore",
-    type: "Full Time",
-    desc: "Develop scalable APIs with Node.js and MongoDB.",
-  },
-  {
-    id: "003",
-    title: "UI/UX Designer",
-    location: "Delhi",
-    type: "Contract",
-    desc: "Design creative and user-friendly experiences.",
-  },
-  {
-    id: "004",
-    title: "Digital Marketing Specialist",
-    location: "Remote",
-    type: "Full Time",
-    desc: "Create data-driven marketing strategies.",
-  },
-];
 
 const CareerPage = () => {
 
