@@ -1,5 +1,5 @@
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import styles from "../../style/HowItWorks.module.css";
 
 // More precise path for smoother rocket movement

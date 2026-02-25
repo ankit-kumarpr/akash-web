@@ -4,17 +4,11 @@ import styles from '../style/Footer.module.css';
 // Import React Icons
 import {
   FaFacebookF,
-  FaTwitter,
   FaInstagram,
   FaLinkedinIn,
   FaMapMarkerAlt,
   FaEnvelope,
   FaPhone,
-  FaArrowRight,
-  FaFacebook,
-  FaTwitterSquare,
-  FaInstagramSquare,
-  FaLinkedin,
   FaYoutube
 } from 'react-icons/fa';
 
@@ -66,20 +60,6 @@ const Footer = () => {
         damping: 10
       }
     }
-  };
-
-  const buttonVariants = {
-    initial: { scale: 1 },
-    hover: {
-      scale: 1.05,
-      boxShadow: "0 10px 25px rgba(102, 255, 51, 0.3)",
-      transition: {
-        type: "spring",
-        stiffness: 400,
-        damping: 10
-      }
-    },
-    tap: { scale: 0.95 }
   };
 
   const footerBottomVariants = {

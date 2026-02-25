@@ -15,13 +15,6 @@ const AboutSection = () => {
     const title = "Reimagining the brand potential best digital marketing";
 
 
-    const features = [
-        "Digital Marketing",
-        "Branding Solution",
-        "Growth Tracking",
-        "Google Rankings",
-    ];
-
     return (
         <>
             <section className={styles.aboutSection}>
